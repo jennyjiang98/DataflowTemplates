@@ -53,7 +53,7 @@ public abstract class View implements Serializable {
     if (rights != null) {
       appendable.append(" SQL SECURITY ").append(rights.toString());
     }
-    appendable.append(" AS ").append(query());
+    appendable.append(" AS ").append(query()).append("\n");
   }
 
   public String prettyPrint() {

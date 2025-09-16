@@ -141,9 +141,9 @@ public abstract class PropertyGraph implements Serializable {
             nodeTables().stream()
                 .map(GraphElementTable::prettyPrint)
                 .collect(Collectors.toList())));
-    appendable.append(")"); // End NODE TABLES()
+    appendable.append(")\n"); // End NODE TABLES()
     if (edgeTables().size() > 0) {
-      appendable.append("\nEDGE TABLES(\n");
+      appendable.append("EDGE TABLES(\n");
       appendable.append(
           String.join(
               ", ",

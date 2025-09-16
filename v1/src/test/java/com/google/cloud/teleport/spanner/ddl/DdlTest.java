@@ -1049,7 +1049,7 @@ public class DdlTest {
     assertThat(
         view.prettyPrint(),
         equalToCompressingWhiteSpace(
-            "CREATE VIEW \"user_view\" SQL SECURITY INVOKER AS SELECT * FROM \"User\""));
+            "CREATE VIEW \"user_view\" SQL SECURITY INVOKER AS SELECT * FROM \"User\"\n"));
     Ddl.Builder ddlBuilder = Ddl.builder();
     ddlBuilder.addView(view);
     Ddl ddl = ddlBuilder.build();
@@ -1057,7 +1057,7 @@ public class DdlTest {
     List<String> statements = ddl.statements();
     assertEquals(1, statements.size());
     assertEquals(
-        "CREATE VIEW \"user_view\" SQL SECURITY INVOKER AS SELECT * FROM \"User\"",
+        "CREATE VIEW \"user_view\" SQL SECURITY INVOKER AS SELECT * FROM \"User\"\n",
         statements.get(0));
     assertNotNull(view.hashCode());
   }
