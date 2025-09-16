@@ -136,21 +136,17 @@ public abstract class PropertyGraph implements Serializable {
     appendable.append("CREATE PROPERTY GRAPH ").append(name());
     appendable.append("\nNODE TABLES(\n");
     appendable.append(
-        String.join(
-            ", ",
-            nodeTables().stream()
-                .map(GraphElementTable::prettyPrint)
-                .collect(Collectors.toList())));
-    appendable.append(")\n"); // End NODE TABLES()
+        nodeTables().stream()
+            .map(GraphElementTable::prettyPrint)
+            .collect(Collectors.joining(",\n")));
+    appendable.append("\n)"); // End NODE TABLES()
     if (edgeTables().size() > 0) {
-      appendable.append("EDGE TABLES(\n");
+      appendable.append("\nEDGE TABLES(\n");
       appendable.append(
-          String.join(
-              ", ",
-              edgeTables().stream()
-                  .map(GraphElementTable::prettyPrint)
-                  .collect(Collectors.toList())));
-      appendable.append(")"); // End EDGE TABLES()
+          edgeTables().stream()
+              .map(GraphElementTable::prettyPrint)
+              .collect(Collectors.joining(",\n")));
+      appendable.append("\n)"); // End EDGE TABLES()
     }
   }
 
